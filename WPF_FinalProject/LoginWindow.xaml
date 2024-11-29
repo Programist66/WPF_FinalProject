@@ -1,0 +1,95 @@
+﻿<Window x:Class="WPF_FinalProject.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_FinalProject"
+        xmlns:uc ="clr-namespace:WPF_FinalProject.UserControls"
+        mc:Ignorable="d"
+        Title="Login" Height="400" Width="300" 
+        ResizeMode="NoResize" WindowStyle="None" Background="Transparent"
+        WindowStartupLocation="CenterScreen"
+        d:DataContext="{d:DesignInstance local:LoginVM}">
+    
+    <Border Background="#D3FFFF" CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <DockPanel MouseDown="ToolBar_MouseDown"
+                       Background="Transparent">                
+                <Button DockPanel.Dock="Right" Content="X" 
+                Background="Transparent" BorderBrush="Transparent"
+                Foreground="Black" FontFamily="Berlin Sans FB Demi" FontSize="20"
+                Margin="0 0 5 0"
+                Click="ButtonClose_Click"/>
+                <Button DockPanel.Dock="Right" Content="___" 
+                Background="Transparent" BorderBrush="Transparent"
+                Foreground="Black" FontFamily="Berlin Sans FB Demi" FontSize="16"
+                Margin="0 0 10 0"
+                Click="ButtonMinimaze_Click"/>
+                <Rectangle/>
+            </DockPanel>
+            <StackPanel Grid.Row="1">
+                <TextBlock HorizontalAlignment="Center"
+                Margin="0 10 0 0"
+                FontSize="21" FontFamily="Myriad Pro">
+                    Добро Пожаловать!
+                </TextBlock>
+                <TextBlock HorizontalAlignment="Center"
+                Margin="0 10 0 0"
+                FontSize="16" FontFamily="Myriad Pro">
+                    Войдите в свою учетную запись
+                </TextBlock>
+            </StackPanel>
+            
+
+            <StackPanel  Grid.Row="2">
+                <uc:TextBoxPlaceHolder
+                    x:Name="loginBox"
+                    Text="{Binding UserName}"
+                    BorderBrush="#00FFFF"
+                    HorizontalAlignment="Center"
+                    Width="200" Height="31"
+                    Hint="Логин" HintBrush="Gray"/>
+                <TextBlock x:Name="loginError"
+                    Visibility="Hidden"
+                    HorizontalAlignment="Center"
+                    FontSize="8" Foreground="Red">
+                    Поле не может быть пустым
+                </TextBlock>
+                <uc:PasswordBoxPlaceHolder
+                    x:Name="pwdBox"
+                    BorderBrush="#00FFFF"
+                    HorizontalAlignment="Center"
+                    Width="200" Height="31"
+                    Margin="0 15 0 0"
+                    Hint="Пароль" HintBrush="Gray"
+                    PasswordHideImg="Images/HidePwd.png"
+                    PasswordShowImg="Images/ShowPwd.png"/>
+                <TextBlock x:Name="passwordError"
+                    Visibility="Hidden"
+                    HorizontalAlignment="Center"
+                    FontSize="8" Foreground="Red">
+                    Поле не может быть пустым
+                </TextBlock>
+            </StackPanel>
+            
+            
+            <Button Style="{DynamicResource RoundedButton}" Grid.Row="4"
+                    VerticalAlignment="Center" HorizontalAlignment="Center"
+                    Padding="60 10 60 10"
+                    Background="#29C4E2"
+                    Foreground="#FFFFFF"
+                    FontSize="22"
+                    FontFamily="Myriad Pro"
+                    Click="ButtonAuthrorization_Click"
+                    IsDefault="True">
+                Войти
+            </Button>
+        </Grid>
+    </Border>    
+</Window>

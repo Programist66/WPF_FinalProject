@@ -1,0 +1,29 @@
+﻿<Application x:Class="WPF_FinalProject.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:WPF_FinalProject"
+             xmlns:view="clr-namespace:WPF_FinalProject.View"
+             xmlns:viewModel="clr-namespace:WPF_FinalProject.ViewModels"
+             StartupUri="LoginWindow.xaml">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/Button.xaml"/>
+                <ResourceDictionary Source="/Styles/MenuBarStyle.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <DataTemplate DataType="{x:Type viewModel:MainUsersVM}">
+                <view:UsersView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:MainDepartmentVM}">
+                <view:DepartmentView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:MainPositionVM}">
+                <view:PositionView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:MainOfficeVM}">
+                <view:OfficeView/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
